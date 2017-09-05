@@ -1,0 +1,3 @@
+# MandelbrotSet
+
+Sequently, parallel, ...
