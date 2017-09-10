@@ -52,12 +52,13 @@ public class VzporednoClass extends JComponent implements ActionListener,KeyList
 		frame.pack();
 		frame.addKeyListener(this);
 		frame.setVisible(true);
-		
-		renderSet();	
+		long time = System.currentTimeMillis();
+		renderSet();
+		time = System.currentTimeMillis()-time;
+		System.out.println("Porabljen cas(zacetek): " + time + "ms");
 	}
 	
 	public void renderSet() throws InterruptedException {
-//		SCALE += ITERATION_VAL;
 		long time = System.currentTimeMillis();
 //		ITERATION_VAL += 10;
 		long start1 = System.currentTimeMillis();
@@ -89,16 +90,7 @@ public class VzporednoClass extends JComponent implements ActionListener,KeyList
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		System.out.println(event);
-//		System.out.println("TICK");
-		hueOffset += 0.005f;
-		try {
-			renderSet();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		frame.repaint();
+		
 	}
 
 	@Override
@@ -138,7 +130,10 @@ public class VzporednoClass extends JComponent implements ActionListener,KeyList
 			return;
 		}
 		try {
+			long time = System.currentTimeMillis();
 			renderSet();
+			time = System.currentTimeMillis()-time;
+			System.out.println("" + time + "");
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

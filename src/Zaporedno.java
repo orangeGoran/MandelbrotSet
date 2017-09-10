@@ -60,7 +60,7 @@ public class Zaporedno extends JComponent implements ActionListener,KeyListener,
 			sum += time;
 		}
 		sum = sum/i;
-		System.out.println("Porabljen cas: " + sum + "ms");
+		System.out.println("Porabljen cas(zacetek): " + sum + "ms");
 	
 	}
 	
@@ -111,17 +111,7 @@ public class Zaporedno extends JComponent implements ActionListener,KeyListener,
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		String event = e.getActionCommand();
-//		System.out.println(event);
-//		System.out.println("TICK");
-		hueOffset += 0.005f;
-		try {
-			renderSet();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		frame.repaint();
+		
 	}
 
 	@Override
@@ -161,7 +151,10 @@ public class Zaporedno extends JComponent implements ActionListener,KeyListener,
 			return;
 		}
 		try {
+			long time = System.currentTimeMillis();
 			renderSet();
+			time = System.currentTimeMillis()-time;
+			System.out.println("" + time + "");
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
